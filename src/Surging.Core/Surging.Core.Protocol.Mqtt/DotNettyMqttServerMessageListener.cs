@@ -8,6 +8,7 @@ using DotNetty.Transport.Channels.Sockets;
 using DotNetty.Transport.Libuv;
 using Microsoft.Extensions.Logging;
 using Surging.Core.CPlatform;
+using Surging.Core.CPlatform.Diagnostics;
 using Surging.Core.CPlatform.Messages;
 using Surging.Core.CPlatform.Serialization;
 using Surging.Core.CPlatform.Transport;
@@ -19,6 +20,7 @@ using Surging.Core.Protocol.Mqtt.Internal.Runtime;
 using Surging.Core.Protocol.Mqtt.Internal.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +35,7 @@ namespace Surging.Core.Protocol.Mqtt
         private IChannel _channel;
         private readonly IChannelService _channelService;
         private readonly IMqttBehaviorProvider _mqttBehaviorProvider;
+        private readonly DiagnosticListener _diagnosticListener;
         #endregion Field
 
         public event ReceivedDelegate Received;
@@ -45,6 +48,7 @@ namespace Surging.Core.Protocol.Mqtt
             _logger = logger;
             _channelService = channelService;
             _mqttBehaviorProvider = mqttBehaviorProvider;
+            _diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
         }
         #endregion
 
@@ -189,6 +193,20 @@ namespace Surging.Core.Protocol.Mqtt
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError($"message:{ex.Message},Source:{ex.Source},Trace:{ex.StackTrace}");
+            }
+        }
+
+        private void WirteDiagnosticError(TransportMessage message)
+        {
+            if (!AppConfig.ServerOptions.DisableDiagnostic)
+            {
+                var remoteInvokeResultMessage = message.GetContent<RemoteInvokeResultMessage>();
+                _diagnosticListener.WriteTransportError(TransportType.Mqtt, new TransportErrorEventData(new DiagnosticMessage
+                {
+                    Content = message.Content,
+                    ContentType = message.ContentType,
+                    Id = message.Id
+                }, new Exception(remoteInvokeResultMessage.ExceptionMessage)));
             }
         }
     }
