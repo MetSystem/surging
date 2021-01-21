@@ -38,7 +38,6 @@ namespace Surging.Services.Server
                         option.AddServiceRuntime()
                         .AddRelateService()
                         .AddConfigurationWatch()
-                        //option.UseZooKeeperManager(new ConfigInfo("127.0.0.1:2181")); 
                         .AddServiceEngine(typeof(SurgingServiceEngine));
                         builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                     });
@@ -54,8 +53,8 @@ namespace Surging.Services.Server
                 build.AddCacheFile("${cachepath}|cacheSettings.json", basePath: AppContext.BaseDirectory, optional: false, reloadOnChange: true))
                   .Configure(build =>
                 build.AddCPlatformFile("${surgingpath}|surgingSettings.json", optional: false, reloadOnChange: true))
-                .UseStartup<Startup>()
-                .Build();
+                    .UseStartup<Startup>()
+                    .Build();
 
             using (host.Run())
             {

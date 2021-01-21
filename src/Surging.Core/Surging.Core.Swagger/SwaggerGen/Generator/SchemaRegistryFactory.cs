@@ -10,7 +10,7 @@ namespace Surging.Core.SwaggerGen
         private readonly SchemaRegistryOptions _schemaRegistryOptions;
 
         public SchemaRegistryFactory(
-            IOptions<MvcJsonOptions> mvcJsonOptionsAccessor,
+            IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptionsAccessor,
             IOptions<SchemaRegistryOptions> schemaRegistryOptionsAccessor)
             : this(mvcJsonOptionsAccessor.Value.SerializerSettings, schemaRegistryOptionsAccessor.Value)
         { }

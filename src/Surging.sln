@@ -111,7 +111,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surging.Core.Thrift", "Surg
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Surging.Tools", "Surging.Tools", "{78305463-1A38-4431-AFB0-0A0BE59D5A03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surging.Tools.Cli", "Surging.Tools\Surging.Tools.Cli\Surging.Tools.Cli.csproj", "{39B65A52-996E-4429-95DB-4731CD1EEAA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surging.Tools.Cli", "Surging.Tools\Surging.Tools.Cli\Surging.Tools.Cli.csproj", "{39B65A52-996E-4429-95DB-4731CD1EEAA9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surging.Core.Protocol.Tcp", "Surging.Core\Surging.Core.Protocol.Tcp\Surging.Core.Protocol.Tcp.csproj", "{F5C30358-C1B0-4F66-81C7-1042DBBE5E0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -307,6 +309,10 @@ Global
 		{39B65A52-996E-4429-95DB-4731CD1EEAA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39B65A52-996E-4429-95DB-4731CD1EEAA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39B65A52-996E-4429-95DB-4731CD1EEAA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5C30358-C1B0-4F66-81C7-1042DBBE5E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5C30358-C1B0-4F66-81C7-1042DBBE5E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5C30358-C1B0-4F66-81C7-1042DBBE5E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5C30358-C1B0-4F66-81C7-1042DBBE5E0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -357,6 +363,7 @@ Global
 		{FA1216E9-867C-4CAC-BFB5-0BDE8BC6CD2E} = {E3ADE8DE-5F3A-4E76-B22F-2C9435AACA06}
 		{734B6128-C5E7-4746-B8B9-58B9798F9174} = {E3ADE8DE-5F3A-4E76-B22F-2C9435AACA06}
 		{39B65A52-996E-4429-95DB-4731CD1EEAA9} = {78305463-1A38-4431-AFB0-0A0BE59D5A03}
+		{F5C30358-C1B0-4F66-81C7-1042DBBE5E0C} = {E3ADE8DE-5F3A-4E76-B22F-2C9435AACA06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9889BCDC-E6A6-448F-B01A-ECFD0FAF294C}

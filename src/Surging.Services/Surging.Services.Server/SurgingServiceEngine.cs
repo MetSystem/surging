@@ -18,9 +18,6 @@ namespace Surging.Services.Server
             ComponentServiceLocationFormats  = new[] {
                  EnvironmentHelper.GetEnvironmentVariable("${ComponentPath1}|Components"),
             };
-            //ModuleServiceLocationFormats = new[] {
-            //   ""
-            //};
         }
     }
 }

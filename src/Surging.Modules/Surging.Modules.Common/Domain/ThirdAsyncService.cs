@@ -1,9 +1,6 @@
 ﻿using Surging.Core.ProxyGenerator;
 using Surging.Core.Thrift.Attributes;
 using Surging.IModuleServices.Common;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using static ThriftCore.ThirdCalculator;

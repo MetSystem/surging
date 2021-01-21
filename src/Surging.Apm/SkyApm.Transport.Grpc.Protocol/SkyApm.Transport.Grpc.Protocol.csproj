@@ -9,7 +9,7 @@
         <PackageTags>SkyWalking;Grpc</PackageTags>
         <PackageReleaseNotes>
         </PackageReleaseNotes>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <RootNamespace>SkyApm.Transport.Grpc.Protocol</RootNamespace>
     </PropertyGroup>
 
@@ -21,6 +21,13 @@
     
     <ItemGroup>
         <Protobuf Include="protocol/**/*.proto" ProtoRoot="protocol" OutputDir="%(RelativePath)generated" CompileOutputs="false" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Remove="protocol\**" />
+      <EmbeddedResource Remove="protocol\**" />
+      <None Remove="protocol\**" />
+      <Protobuf Remove="protocol\**" />
     </ItemGroup>
 
     <PropertyGroup>

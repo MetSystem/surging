@@ -10,8 +10,9 @@ namespace Surging.Tools.Cli.Utilities
     {
         static SerializerUtilitys()
         {
-            // CompositeResolver.Create(NativeDateTimeResolver.Instance, ContractlessStandardResolverAllowPrivate.Instance);
-            CompositeResolver.RegisterAndSetAsDefault(NativeDateTimeResolver.Instance, ContractlessStandardResolverAllowPrivate.Instance);
+            CompositeResolver.Create(NativeDateTimeResolver.Instance, ContractlessStandardResolverAllowPrivate.Instance);
+            //CompositeResolver.RegisterAndSetAsDefault(NativeDateTimeResolver.Instance, ContractlessStandardResolverAllowPrivate.Instance);
+            
         }
 
         public static byte[] Serialize<T>(T instance)
@@ -26,7 +27,7 @@ namespace Surging.Tools.Cli.Utilities
 
         public static object Deserialize(byte[] data, Type type)
         {
-            return data == null ? null : MessagePackSerializer.NonGeneric.Deserialize(type, data);
+            return data == null ? null : MessagePackSerializer.Deserialize(type, data);
         }
 
         public static T Deserialize<T>(byte[] data)

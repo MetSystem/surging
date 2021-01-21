@@ -121,7 +121,8 @@ namespace Surging.Core.KestrelHttpServer
                 _moduleProvider.VirtualPaths,
                 AppConfig.Configuration));
             builder.Populate(services); 
-            builder.Update(_container.Current.ComponentRegistry);
+            // todo 修复
+            //builder.Update(_container.Current.ComponentRegistry);
         }
 
         private void AppResolve(IApplicationBuilder app)

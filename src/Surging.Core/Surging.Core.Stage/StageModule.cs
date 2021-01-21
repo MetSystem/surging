@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Text.Json;
 
 namespace Surging.Core.Stage
 {
@@ -67,7 +68,8 @@ namespace Surging.Core.Stage
                 ApiGateWay.AppConfig.TokenEndpointPath = apiConfig.TokenEndpointPath;
             }
             context.Services.AddMvc().AddJsonOptions(options => {
-                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
+                //options.JsonSerializerOptions..SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                 if (AppConfig.Options.IsCamelCaseResolver)
                 {
                     JsonConvert.DefaultSettings= new Func<JsonSerializerSettings>(() =>
@@ -77,7 +79,7 @@ namespace Surging.Core.Stage
                         setting.ContractResolver = new CamelCasePropertyNamesContractResolver();
                         return setting;
                     });
-                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    //options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 }
                 else
                 {
@@ -88,7 +90,7 @@ namespace Surging.Core.Stage
                         setting.ContractResolver= new DefaultContractResolver();
                         return setting;
                     });
-                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    //options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 }
             });
           
@@ -108,6 +110,24 @@ namespace Surging.Core.Stage
             }
             
             builder.RegisterType<WebServerListener>().As<IWebServerListener>().SingleInstance(); 
+        }
+    }
+
+    public class DateTimeConverter : System.Text.Json.Serialization.JsonConverter<DateTime>
+    {
+        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (reader.TokenType == JsonTokenType.String)
+            {
+                if (DateTime.TryParse(reader.GetString(), out DateTime date))
+                    return date;
+            }
+            return reader.GetDateTime();
+        }
+
+        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value.ToString("yyyy-MM-dd HH:mm:ss"));
         }
     }
 }
