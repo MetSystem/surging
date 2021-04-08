@@ -1,14 +1,11 @@
 ﻿using Autofac;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Surging.Core.ServiceHosting.Internal.Implementation
 {
-   public  class ConfigureServicesBuilder
+    public  class ConfigureServicesBuilder
     {
         public ConfigureServicesBuilder(MethodInfo configureServices)
         {

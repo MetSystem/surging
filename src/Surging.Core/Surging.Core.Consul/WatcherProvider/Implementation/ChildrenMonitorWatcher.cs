@@ -1,9 +1,9 @@
 ﻿using Consul;
-using System;
-using System.Threading.Tasks;
 using Surging.Core.Consul.Utilitys;
-using System.Linq;
 using Surging.Core.Consul.WatcherProvider.Implementation;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Surging.Core.Consul.WatcherProvider
 {

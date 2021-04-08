@@ -1,23 +1,22 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Support.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Surging.Core.CPlatform.Support;
-using System.Threading.Tasks;
-using Surging.Core.CPlatform.Serialization;
+﻿using Consul;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Runtime.Server;
 using Surging.Core.Consul.Configurations;
-using Consul;
-using System.Linq;
-using Surging.Core.Consul.WatcherProvider;
+using Surging.Core.Consul.Internal;
 using Surging.Core.Consul.Utilitys;
+using Surging.Core.Consul.WatcherProvider;
 using Surging.Core.Consul.WatcherProvider.Implementation;
 using Surging.Core.CPlatform.Routing;
 using Surging.Core.CPlatform.Routing.Implementation;
 using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.Consul.Internal;
+using Surging.Core.CPlatform.Runtime.Server;
+using Surging.Core.CPlatform.Serialization;
+using Surging.Core.CPlatform.Support;
+using Surging.Core.CPlatform.Support.Implementation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Surging.Core.Consul
 {

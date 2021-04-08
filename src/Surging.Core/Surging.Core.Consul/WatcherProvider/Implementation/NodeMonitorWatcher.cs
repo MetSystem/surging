@@ -1,8 +1,6 @@
 ﻿using Consul;
 using Surging.Core.Consul.Utilitys;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Surging.Core.Consul.WatcherProvider.Implementation

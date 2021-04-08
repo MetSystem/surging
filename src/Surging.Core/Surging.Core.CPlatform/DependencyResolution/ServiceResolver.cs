@@ -3,7 +3,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Surging.Core.CPlatform.DependencyResolution
 {
@@ -18,8 +17,7 @@ namespace Surging.Core.CPlatform.DependencyResolution
     {
         #region 字段
         private static readonly ServiceResolver _defaultInstance = new ServiceResolver();
-        private readonly ConcurrentDictionary<ValueTuple<Type, string>, object> _initializers =
-            new ConcurrentDictionary<ValueTuple<Type, string>, object>();
+        private readonly ConcurrentDictionary<ValueTuple<Type, string>, object> _initializers = new ConcurrentDictionary<ValueTuple<Type, string>, object>();
         #endregion
 
         #region 公共方法
@@ -44,8 +42,8 @@ namespace Surging.Core.CPlatform.DependencyResolution
                 _initializers.GetOrAdd(ValueTuple.Create(interFace, key), value);
             }
         }
-        
-        public virtual void Register(string key, object value,Type type)
+
+        public virtual void Register(string key, object value, Type type)
         {
             DebugCheck.NotNull(value);
             _initializers.GetOrAdd(ValueTuple.Create(type, key), value);

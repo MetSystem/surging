@@ -44,17 +44,16 @@ namespace Surging.Services.Server
                 })
                 .ConfigureLogging(logger =>
                 {
-                    logger.AddConfiguration(
-                        Core.CPlatform.AppConfig.GetSection("Logging"));
+                    logger.AddConfiguration(Core.CPlatform.AppConfig.GetSection("Logging"));
                 })
                 .UseServer(options => { })
                 .UseConsoleLifetime()
                 .Configure(build =>
-                build.AddCacheFile("${cachepath}|cacheSettings.json", basePath: AppContext.BaseDirectory, optional: false, reloadOnChange: true))
-                  .Configure(build =>
-                build.AddCPlatformFile("${surgingpath}|surgingSettings.json", optional: false, reloadOnChange: true))
-                    .UseStartup<Startup>()
-                    .Build();
+                    build.AddCacheFile("${cachepath}|cacheSettings.json", basePath: AppContext.BaseDirectory, optional: false, reloadOnChange: true))
+                .Configure(build =>
+                    build.AddCPlatformFile("${surgingpath}|surgingSettings.json", optional: false, reloadOnChange: true))
+                .UseStartup<Startup>()
+                .Build();
 
             using (host.Run())
             {

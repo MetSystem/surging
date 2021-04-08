@@ -1,12 +1,8 @@
 ﻿using Autofac;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Surging.Core.ServiceHosting.Startup
 {
-   public  interface IStartup
+    public  interface IStartup
     {
         IContainer ConfigureServices(ContainerBuilder services);
 

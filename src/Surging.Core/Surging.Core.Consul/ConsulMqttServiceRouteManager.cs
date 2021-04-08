@@ -10,7 +10,6 @@ using Surging.Core.CPlatform.Mqtt;
 using Surging.Core.CPlatform.Mqtt.Implementation;
 using Surging.Core.CPlatform.Runtime.Client;
 using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Transport.Implementation;
 using Surging.Core.CPlatform.Utilities;
 using System;
 using System.Collections.Generic;

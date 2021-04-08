@@ -1,11 +1,9 @@
 ﻿using Surging.Core.CPlatform.Utilities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Surging.Core.CPlatform.Module
 {
-   public class AppModuleContext
+    public class AppModuleContext
     {
         public AppModuleContext(List<AbstractModule> modules, 
             string[] virtualPaths,

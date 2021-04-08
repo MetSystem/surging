@@ -1,19 +1,15 @@
-﻿using Surging.Core.ServiceHosting.Internal;
-using Surging.Core.ServiceHosting.Startup;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using Autofac;
-using Surging.Core.ServiceHosting.Startup.Implementation;
-using Autofac.Extensions.DependencyInjection;
-using Surging.Core.ServiceHosting.Internal.Implementation;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+using Surging.Core.ServiceHosting.Internal;
+using Surging.Core.ServiceHosting.Internal.Implementation;
+using Surging.Core.ServiceHosting.Startup;
+using Surging.Core.ServiceHosting.Startup.Implementation;
+using System;
+using System.Reflection;
 
 namespace Surging.Core.ServiceHosting
 {
-   public static   class ServiceHostBuilderExtensions
+    public static   class ServiceHostBuilderExtensions
     {
         public static IServiceHostBuilder UseStartup(this IServiceHostBuilder hostBuilder, Type startupType)
         {

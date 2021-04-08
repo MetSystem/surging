@@ -8,13 +8,31 @@ using System.Collections.Generic;
 
 namespace Surging.Core.ServiceHosting.Internal.Implementation
 {
+    /// <summary>
+    /// 服务主机建造者
+    /// </summary>
     public class ServiceHostBuilder : IServiceHostBuilder
     {
+        /// <summary>
+        /// 配置服务委托集合
+        /// </summary 
         private readonly List<Action<IServiceCollection>> _configureServicesDelegates;
+        /// <summary>
+        /// 注册服务委托集合
+        /// </summary>
         private readonly List<Action<ContainerBuilder>> _registerServicesDelegates;
+        /// <summary>
+        /// 配置委托集合
+        /// </summary>
         private readonly List<Action<IConfigurationBuilder>> _configureDelegates;
+        /// <summary>
+        /// 映射服务委托集合
+        /// </summary>
         private readonly List<Action<IContainer>> _mapServicesDelegates;
-        private  Action<ILoggingBuilder> _loggingDelegate;
+        /// <summary>
+        /// 日志委托
+        /// </summary>
+        private Action<ILoggingBuilder> _loggingDelegate;
 
         public ServiceHostBuilder()
         {
@@ -22,26 +40,29 @@ namespace Surging.Core.ServiceHosting.Internal.Implementation
             _registerServicesDelegates = new List<Action<ContainerBuilder>>();
             _configureDelegates = new List<Action<IConfigurationBuilder>>();
             _mapServicesDelegates = new List<Action<IContainer>>();
-
         }
 
         public IServiceHost Build()
         {
-           
             var services = BuildCommonServices();
             var config = Configure();
-            if(_loggingDelegate!=null)
-            services.AddLogging(_loggingDelegate);
+            if (_loggingDelegate != null)
+            {
+                services.AddLogging(_loggingDelegate);
+            }
             else
+            {
                 services.AddLogging();
+            }
+
             services.AddSingleton(typeof(IConfigurationBuilder), config);
             var hostingServices = RegisterServices();
-            var applicationServices = services.Clone();
+            // var applicationServices = services.Clone();
             var hostingServiceProvider = services.BuildServiceProvider();
             hostingServices.Populate(services);
             var hostLifetime = hostingServiceProvider.GetService<IHostLifetime>();
-            var host = new ServiceHost(hostingServices,hostingServiceProvider, hostLifetime,_mapServicesDelegates);
-            var container= host.Initialize();
+            var host = new ServiceHost(hostingServices, hostingServiceProvider, hostLifetime, _mapServicesDelegates);
+            var container = host.Initialize();
             return host;
         }
 
@@ -64,7 +85,7 @@ namespace Surging.Core.ServiceHosting.Internal.Implementation
             _registerServicesDelegates.Add(builder);
             return this;
         }
-        
+
         public IServiceHostBuilder ConfigureServices(Action<IServiceCollection> configureServices)
         {
             if (configureServices == null)
@@ -82,9 +103,23 @@ namespace Surging.Core.ServiceHosting.Internal.Implementation
                 throw new ArgumentNullException(nameof(builder));
             }
             _configureDelegates.Add(builder);
-            return this; 
+            return this;
         }
 
+        public IServiceHostBuilder ConfigureLogging(Action<ILoggingBuilder> configure)
+        {
+            if (configure == null)
+            {
+                throw new ArgumentNullException(nameof(configure));
+            }
+            _loggingDelegate = configure;
+            return this;
+        }
+
+        /// <summary>
+        /// 构建组合服务
+        /// </summary>
+        /// <returns>IServiceCollection</returns>
         private IServiceCollection BuildCommonServices()
         {
             var services = new ServiceCollection();
@@ -95,16 +130,24 @@ namespace Surging.Core.ServiceHosting.Internal.Implementation
             return services;
         }
 
+        /// <summary>
+        /// 配置
+        /// </summary>
+        /// <returns>IConfigurationBuilder</returns>
         private IConfigurationBuilder Configure()
         {
-            var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory); 
+            var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
             foreach (var configure in _configureDelegates)
             {
                 configure(config);
             }
             return config;
         }
-        
+
+        /// <summary>
+        /// 注册服务
+        /// </summary>
+        /// <returns>ContainerBuilder</returns>
         private ContainerBuilder RegisterServices()
         {
             var hostingServices = new ContainerBuilder();
@@ -113,16 +156,6 @@ namespace Surging.Core.ServiceHosting.Internal.Implementation
                 registerServices(hostingServices);
             }
             return hostingServices;
-        }
-
-        public IServiceHostBuilder ConfigureLogging(Action<ILoggingBuilder> configure)
-        {
-            if (configure == null)
-            {
-                throw new ArgumentNullException(nameof(configure));
-            }
-            _loggingDelegate=configure;
-            return this;
         }
     }
 }

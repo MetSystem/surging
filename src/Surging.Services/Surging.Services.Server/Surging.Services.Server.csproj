@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <ServerGarbageCollection>false</ServerGarbageCollection>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <TieredCompilation>true</TieredCompilation>
   </PropertyGroup>
 
@@ -31,7 +31,7 @@
     <PackageReference Include="Autofac" Version="4.9.4" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
-    <PackageReference Include="Volo.Abp.EventBus" Version="4.0.1" />
+    <PackageReference Include="Volo.Abp.EventBus" Version="4.2.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,6 +57,7 @@
     <ProjectReference Include="..\..\Surging.Core\Surging.Core.NLog\Surging.Core.Nlog.csproj" />
     <ProjectReference Include="..\..\Surging.Core\Surging.Core.Protocol.Http\Surging.Core.Protocol.Http.csproj" />
     <ProjectReference Include="..\..\Surging.Core\Surging.Core.Protocol.Mqtt\Surging.Core.Protocol.Mqtt.csproj" />
+    <ProjectReference Include="..\..\Surging.Core\Surging.Core.Protocol.Tcp\Surging.Core.Protocol.Tcp.csproj" />
     <ProjectReference Include="..\..\Surging.Core\Surging.Core.Protocol.Udp\Surging.Core.Protocol.Udp.csproj" />
     <ProjectReference Include="..\..\Surging.Core\Surging.Core.Protocol.WS\Surging.Core.Protocol.WS.csproj" />
     <ProjectReference Include="..\..\Surging.Core\Surging.Core.ProxyGenerator\Surging.Core.ProxyGenerator.csproj" />

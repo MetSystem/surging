@@ -1,11 +1,7 @@
-﻿using Consul;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Surging.Core.Consul.Configurations;
-using Surging.Core.Consul.Utilitys;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;

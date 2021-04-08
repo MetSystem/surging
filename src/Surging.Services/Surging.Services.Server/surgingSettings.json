@@ -6,7 +6,7 @@
     "MappingIp": "${Mapping_ip}",
     "MappingPort": "${Mapping_Port}",
     "Token": "true",
-    "WanIp": "${WanIp}|192.168.249.103",
+    "WanIp": "${WanIp}|172.16.30.185",
     "DockerDeployMode": "${DockerDeployMode}|Standard",
     "Libuv": true,
     "SoBacklog": 100,
@@ -23,13 +23,15 @@
       "HttpPort": "${HttpPort}|280",
       "WSPort": "${WSPort}|96",
       "MQTTPort": "${MQTTPort}|97",
-      "GrpcPort": "${GrpcPort}|95"
+      "GrpcPort": "${GrpcPort}|95",
+      "UdpPort": "${UdpPort}|94"
+      //"TcpPort": "${TcpPort}|93"
     },
     "RequestCacheEnabled": false,
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;ThriftModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpModule;SwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;ServiceHostModule;GrpcModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;ThriftModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpModule;SwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;ServiceHostModule;GrpcModule;ApolloModule;" //TcpProtocolModule
       }
     ]
   }, //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
@@ -75,7 +77,7 @@
     "HttpPorts": "${StageHttpPorts}|285,282,283"
   },
   "Dns": {
-    "RootDnsAddress": "192.168.1.1",
+    "RootDnsAddress": "172.16.30.185",
     "QueryTimeout": 1000
   },
   "Swagger": {

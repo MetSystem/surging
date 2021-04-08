@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using Microsoft.Extensions.DependencyInjection;
 using Surging.Core.ServiceHosting.Startup;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Surging.Core.ServiceHosting.Internal.Implementation
 {
+    /// <summary>
+    /// 服务主机实现
+    /// </summary>
     public class ServiceHost : IServiceHost
     {
         private readonly ContainerBuilder _builder;
@@ -57,7 +59,6 @@ namespace Surging.Core.ServiceHosting.Internal.Implementation
 
         public async Task StopAsync(CancellationToken cancellationToken = default(CancellationToken))
         { 
-
             using (var cts = new CancellationTokenSource(2000))
             using (var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cts.Token, cancellationToken))
             {

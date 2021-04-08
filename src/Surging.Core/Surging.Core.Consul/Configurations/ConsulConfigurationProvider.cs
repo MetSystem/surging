@@ -1,13 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Surging.Core.CPlatform.Configurations.Remote;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Surging.Core.Consul.Configurations
 {
-   public class ConsulConfigurationProvider : FileConfigurationProvider
+    public class ConsulConfigurationProvider : FileConfigurationProvider
     {
         public ConsulConfigurationProvider(ConsulConfigurationSource source) : base(source) { }
 

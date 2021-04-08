@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Consul;
+﻿using Consul;
 using Microsoft.Extensions.Logging;
 using Surging.Core.Consul.Configurations;
 using Surging.Core.Consul.Internal.Cluster.HealthChecks;
 using Surging.Core.Consul.Internal.Cluster.Implementation.Selectors;
-using Surging.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation;
 using Surging.Core.CPlatform;
 using Surging.Core.CPlatform.Address;
 using Surging.Core.CPlatform.Exceptions;
 using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Level = Microsoft.Extensions.Logging.LogLevel;
 
 namespace Surging.Core.Consul.Internal.Implementation

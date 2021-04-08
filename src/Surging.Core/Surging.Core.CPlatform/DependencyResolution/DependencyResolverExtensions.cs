@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Surging.Core.CPlatform.DependencyResolution
 {
@@ -107,8 +106,7 @@ namespace Surging.Core.CPlatform.DependencyResolution
         /// 	<para>创建：范亮</para>
         /// 	<para>日期：2016/4/2</para>
         /// </remarks>
-        internal static IEnumerable<object> GetServiceAsServices(this IDependencyResolver resolver, Type type,
-            object key)
+        internal static IEnumerable<object> GetServiceAsServices(this IDependencyResolver resolver, Type type, object key)
         {
             DebugCheck.NotNull(resolver);
 

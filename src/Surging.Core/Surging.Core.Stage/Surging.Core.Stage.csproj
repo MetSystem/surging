@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IPNetwork2" Version="2.5.240" />
+    <PackageReference Include="IPNetwork2" Version="2.5.290" />
   </ItemGroup>
 
   <ItemGroup>

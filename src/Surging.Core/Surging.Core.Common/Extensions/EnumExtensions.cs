@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace Surging.Core.Common.Extensions
 {

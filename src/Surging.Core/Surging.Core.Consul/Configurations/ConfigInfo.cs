@@ -16,7 +16,7 @@ namespace Surging.Core.Consul.Configurations
         /// <param name="subscriberPath">订阅者配置路径</param>
         /// <param name="cachePath">缓存中心配置路径</param>
         public ConfigInfo(string connectionString,string routePath = "services/serviceRoutes/",
-             string subscriberPath = "services/serviceSubscribers/",
+            string subscriberPath = "services/serviceSubscribers/",
             string commandPath = "services/serviceCommands/",
             string cachePath="services/serviceCaches/",
             string mqttRoutePath = "services/mqttServiceRoutes/",
@@ -37,7 +37,7 @@ namespace Surging.Core.Consul.Configurations
         /// <param name="mqttRoutePath">Mqtt路由路径配置路径</param>
         public ConfigInfo(string connectionString, TimeSpan sessionTimeout, int lockDelay,
             string routePath = "services/serviceRoutes/",
-             string subscriberPath = "services/serviceSubscribers/",
+            string subscriberPath = "services/serviceSubscribers/",
             string commandPath = "services/serviceCommands/",
             string cachePath= "services/serviceCaches/",
             string mqttRoutePath= "services/mqttServiceRoutes/",
@@ -144,6 +144,5 @@ namespace Surging.Core.Consul.Configurations
             }
             return null;
         }
-
     }
 }
